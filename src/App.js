@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route path="/Home" exact component={Home} />
+          <Route path="/" exact component={Home} />
           <Route path="/Haircut" exact component={Haircut} />
           <Route path="/Hygiene" exact component={Hygiene} />
           <Route path="/Cleaning" exact component={Cleaning} />
