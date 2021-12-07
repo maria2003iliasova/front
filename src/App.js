@@ -7,7 +7,7 @@ import Cleaning from "./pages/Cleaning"
 import Creative from "./pages/Creative"
 import Post_worker from "./pages/Post_worker"
 import Post_service from "./pages/Post_service"
-import Post_record from "./pages/Post_record"
+import Get_login from "./pages/Get_login"
 import Layout from "./components/Layout"
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/Creative" exact component={Creative} />
           <Route path="/Post_worker" exact component={Post_worker} />
           <Route path="/Post_service" exact component={Post_service} />
-          <Route path="/Post_record" exact component={Post_record} />
+          <Route path="/Get_login" exact component={Get_login} />
         </Switch>
       </Layout>
     </BrowserRouter>
