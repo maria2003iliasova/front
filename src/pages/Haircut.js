@@ -8,7 +8,7 @@ const Haircut = () => {
   // этот useEffect будет запущен один раз
   // аналогично componentDidMount()
   useEffect(() => {
-    fetch("http://localhost:3001/service?category=haircut")
+    fetch("http://localhost:3001/record")
       .then(res => res.json())
       .then(
         (result) => {
@@ -33,7 +33,8 @@ const Haircut = () => {
       <ul>
         {items.map(item => (
           <li key={item.id}>
-            {item.title} {item.price}
+            {item.firstName} {item.lastName} {item.middleName},
+            {item.phone} {item.email}
           </li>
         ))}
       </ul>
