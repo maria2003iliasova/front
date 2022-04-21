@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before{
+    box-sizing:border-box;
+}
+#logo {
+    width: 50px;
+}
+nav li{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0 0 0 15px;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+}
+nav{
+    background: #C9B3FF !important;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}

@@ -1,174 +1,41 @@
 import React from 'react';
-import { Formik } from 'formik';
-import * as yup from 'yup'
+import home from '../assets/home.png'
+import groomer from '../assets/groomer.png'
 
 function Home() {
-  const validationsSchema = yup.object().shape({
-    firstName: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    lastName: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    middleName: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    login: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    phone: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    password: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    confirmPassword: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают').required('Обязательно'),
-    email: yup.string().email('Введите верный email').required('Обязательно'),
-    confirmEmail: yup.string().email('Введите верный email').oneOf([yup.ref('email')], 'Email не совпадают').required('Обязательно')
-  })
   return (
     <div>
-      <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          middleName: '',
-          login: '',
-          phone: '',
-          password: '',
-          confirmPassword: '',
-          email: '',
-          confirmEmail: ''
-        }}
-        validateOnBlur
-        onSubmit={(values) => {
-          console.log(values)
-          fetch("http://localhost:3001/login", {
-            method: "post",
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify( {
-              firstName: values.firstName,
-              lastName: values.lastName,
-              middleName: values.middleName,
-              login: values.login,
-              phone: values.phone,
-              password: values.password,
-              email: values.email
-            })
-          })
-          .then(res => res.json())
-          .then(
-            (result) => {
-              
-             console.log(result)
-            },
-            // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-            // чтобы не перехватывать исключения из ошибок в самих компонентах.
-            (error) => {
-              
-              console.log(error)
-            }
-          )
-        }}
-        validationSchema={validationsSchema}
-      >
-        {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
-          <div>
-            <p>
-              <label htmlFor={`firstName`}>Имя</label><br />
-              <input
-                type={`text`}
-                name={`firstName`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.firstName}
-              />
-            </p>
-            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-            <p>
-              <label htmlFor={`lastName`}>Фамилия</label><br />
-              <input
-                type={`text`}
-                name={`lastName`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lastName}
-              />
-            </p>
-            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-            <p>
-              <label htmlFor={`middleName`}>Отчество</label><br />
-              <input
-                type={`text`}
-                name={`middleName`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.middleName}
-              />
-            </p>
-            {touched.middleName && errors.middleName && <p>{errors.middleName}</p>}
-            <p>
-              <label htmlFor={`login`}>Логин</label><br />
-              <input
-                type={`text`}
-                name={`login`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.login}
-              />
-            </p>
-            {touched.login && errors.login && <p>{errors.login}</p>}
-            <p>
-              <label htmlFor={`phone`}>Телефон</label><br />
-              <input
-                type={`phone`}
-                name={`phone`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.phone}
-              />
-            </p>
-            {touched.phone && errors.phone && <p>{errors.phone}</p>}
-            <p>
-              <label htmlFor={`password`}>Пароль</label><br />
-              <input
-                type={`password`}
-                name={`password`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-            </p>
-            {touched.password && errors.password && <p>{errors.password}</p>}
-            <p>
-              <label htmlFor={`confirmPassword`}>Подтвердить пароль</label><br />
-              <input
-                type={`password`}
-                name={`confirmPassword`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
-              />
-            </p>
-            {touched.confirmPassword && errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-            <p>
-              <label htmlFor={`email`}>Почта</label><br />
-              <input
-                type={`email`}
-                name={`email`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-            </p>
-            {touched.email && errors.email && <p>{errors.email}</p>}
-            <p>
-              <label htmlFor={`confirmEmail`}>Подтвердить почту</label><br />
-              <input
-                type={`email`}
-                name={`confirmEmail`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmEmail}
-              />
-            </p>
-            {touched.confirmEmail && errors.confirmEmail && <p>{errors.confirmEmail}</p>}
-            <button
-              disabled={!isValid && !dirty}
-              onClick={handleSubmit}
-              type={`submit`}
-            >Добавить пользователя</button>
-          </div>
-        )}
-      </Formik>
+      <h1>О НАС</h1>
+      <section>
+        <div>
+          <img src={home} alt="Home" />
+        </div>
+        <div>
+          <p>Команда ЛАПКИ — это профессионалы, объединенные любовью к животным. Наши грумеры найдут индивидуальный подход к каждому питомцу, а также предложат полезные и приятные процедуры в зависимости от породы и типа шерсти вашего домашнего любимца.<br />    Вы сможете наблюдать за ходом процедур из комфортной зоны ожидания через панорамное стекло, что позволит и вам и вашему питомцу спокойно наслаждаться процессом.</p>
+        </div>
+      </section>
+
+      <h1>Наша команда</h1>
+      <section>
+        <div>
+          <img src={groomer} alt="Home" />
+          <h3>Мария<br/>Грумер</h3>
+          <p>В 2017 году закончила школу груминга Романа Фомина в Москве. В 2018 году — курсы по салонному грумингу йоркширского терье      В 2017 году закончила школу груминга Романа Фомина в Москве. В 2018 году — курсы по салонному грумингу йоркширского терьера, ши-тцу и кошек у Марии Крук в Екатеринбурге. В 2019—2020 годах — курс по грумингу шпица у Евгении Кузнецовой и курсы «Йоркомания» у Ольги Остапенко в Краснодаре.<br/>С удовольствием работает в индустрии зоокрасоты и постоянно интересуется новыми стилями и направлениями в груминге. Любит животных — дома живут двое собак: карликовый пудель Джей и бишон фризеп Эмми, от которых в прошлом отказались хозяева.</p>
+        </div>
+        
+        <div>
+          <img src={groomer} alt="Home" />
+          <h3>Наталия<br/>Администратор</h3>
+          <p>Очень любит животных. С самого детства были собаки, сейчас есть кошка сфинкс зовут Клеопатра. Если бы жила одна, то дома был бы питомник, так как не может пройти мимо бездомного животного, обязательно накормит, погладит и каждый раз расстраивается, что не может забрать к себе домой.</p>
+        </div>
+
+        <div>
+          <img src={groomer} alt="Home" />
+          <h3>Дарья<br/>Грумер</h3>
+          <p>В 2019 году закончила Академию груминга «Боншери» в Москве. Регулярно повышает квалификацию и посещает мастер-классы.<br/>Считает что без любви к друзьям нашим меньшим, эту профессию лучше не осваивать. За счет трепетного и нежного отношения ко всем питомцам, Дарья легко находит с ними общий язык. Как владелец собаки породы самоед, которую зовут Тая, знает насколько важен своевременный уход за питомцем, ведь в этом заключается одна из составляющих заботы и любви к ним.</p>
+        </div>
+      </section>
+
     </div>
   )
 }

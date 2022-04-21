@@ -1,9 +1,9 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
+import { Table, Input, Container, Button } from "reactstrap"
 const Creative = () => {
-    const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-
   // Примечание: пустой массив зависимостей [] означает, что
   // этот useEffect будет запущен один раз
   // аналогично componentDidMount()
@@ -30,13 +30,39 @@ const Creative = () => {
     return <div>Загрузка...</div>;
   } else {
     return (
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.title} {item.price}
-          </li>
-        ))}
-      </ul>
+      <Container>
+      <Table bordered>
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Название
+            </th>
+            <th>
+              Цена
+            </th>
+            <th>
+              Выбрано
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{item.title}</td>
+              <td>{item.price}</td>
+              <td>
+                <Input type="checkbox" />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <Button>Записаться</Button>
+    </Container>
     );
   }
 }

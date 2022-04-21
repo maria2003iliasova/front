@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before{
+    box-sizing:border-box;
+}
+footer li{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0px 45px;
+    text-align: center;
+    color: white;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+footer{
+    background: #C9B3FF !important;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
